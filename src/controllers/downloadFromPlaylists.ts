@@ -1,4 +1,4 @@
-import { google, youtube_v3 } from 'googleapis';
+import { google} from 'googleapis';
 import youtubedl from 'youtube-dl-exec';
 import fs from 'fs';
 import path from 'path';

@@ -2,15 +2,15 @@ import dotenv from "dotenv"
 
 
 dotenv.config(); 
-import express, { Request, Response } from "express";
+import express from "express";
 
 import cors from "cors"
-import { getAuthentication } from "./controllers/getRefreshToken";
+
 import { login } from "./controllers/login";
 import { callback } from "./controllers/callback";
 import { getAccessTokenUsingRefreshToken } from "./controllers/refreshAccess";
 import {  downloadYouTubeAudio } from "./controllers/downloadMp3FromLink";
-import { downloadFromInfo } from "@distube/ytdl-core";
+
 import { downloadPlaylist } from "./controllers/downloadFromPlaylists";
 const app = express();
 
