@@ -1,13 +1,13 @@
 import axios from 'axios';
 import qs from 'qs'; // To format the request body
-import { asyncHandler } from '../utils/asyncHandler';
+
 import { ApiError } from '../utils/apiError';
 
 const clientId = process.env.CLIENT_ID;
 const clientSecret =process.env.CLIENT_SECRET;
 const refreshToken =process.env.REFRESH_TOKEN;
 
-const getAccessTokenUsingRefreshToken =asyncHandler( async (req, res)=> {
+const getAccessTokenUsingRefreshToken=async ()=> {
   const url = 'https://accounts.spotify.com/api/token';
 
   // Encode clientId and clientSecret as Base64
@@ -30,12 +30,12 @@ const getAccessTokenUsingRefreshToken =asyncHandler( async (req, res)=> {
 
     // Response contains the new access token
     console.log('Access Token:', response.data.access_token);
-    return res.status(200).json({token:response.data.access_token});
+    return response.data.access_token
   } catch (error) {
     console.error('Error fetching access token:', error);
     throw new ApiError(500,"token not generated")
   }
 }
-)
+
 // Call the function to fetch a new access token
 export {getAccessTokenUsingRefreshToken}
